@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#172b38" />
+    <title>教师查看台 · 班级匿名信箱</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="admin-body">
+    <main class="admin-shell">
+      <section class="login-card" id="loginView">
+        <div class="login-orbit" aria-hidden="true"><span>✦</span></div>
+        <p class="card-label light-label">TEACHER VIEW</p>
+        <h1>教师查看台</h1>
+        <p class="login-copy">登录后查看班级匿名留言。学生身份信息不会显示在这里。</p>
+        <form id="loginForm" novalidate>
+          <label class="field-label light-field" for="password">后台密码</label>
+          <input id="password" type="password" autocomplete="current-password" placeholder="请输入后台密码" required />
+          <p id="loginError" class="form-error light-error" role="alert"></p>
+          <button class="primary-button dark-button" type="submit"><span>进入查看台</span><span aria-hidden="true">→</span></button>
+        </form>
+      </section>
+
+      <section class="dashboard is-hidden" id="dashboardView">
+        <header class="admin-topbar">
+          <div class="admin-brand">
+            <div class="admin-mark" aria-hidden="true">✦</div>
+            <div><p class="brand-kicker">TEACHER VIEW</p><h1>班级匿名信箱</h1></div>
+          </div>
+          <button class="ghost-button" id="logoutButton" type="button">退出登录</button>
+        </header>
+
+        <section class="dashboard-intro">
+          <div>
+            <p class="eyebrow admin-eyebrow">INBOX / PRIVATE</p>
+            <h2>这里是学生想让你看见的事。</h2>
+            <p>只查看，不追问身份；需要当面沟通时，请结合实际情况谨慎处理。</p>
+          </div>
+          <div class="public-link-card">
+            <span>学生留言地址</span>
+            <code id="publicUrl">正在读取…</code>
+            <button class="mini-button" id="copyUrlButton" type="button">复制地址</button>
+          </div>
+        </section>
+
+        <section class="stats-grid" aria-label="留言统计">
+          <div class="stat-card"><span>全部留言</span><strong id="totalCount">0</strong></div>
+          <div class="stat-card stat-accent"><span>未读留言</span><strong id="unreadCount">0</strong></div>
+          <div class="stat-card"><span>本周收到</span><strong id="weekCount">0</strong></div>
+        </section>
+
+        <section class="export-card" aria-labelledby="exportHeading">
+          <div class="export-copy">
+            <p class="card-label">EXPORT / DATE RANGE</p>
+            <h2 id="exportHeading">按日期导出</h2>
+            <p>按北京时间筛选，下载 CSV 表格。</p>
+          </div>
+          <form id="exportForm" class="export-form">
+            <label for="exportStartDate">开始日期<input id="exportStartDate" type="date" required /></label>
+            <span class="export-range" aria-hidden="true">至</span>
+            <label for="exportEndDate">结束日期<input id="exportEndDate" type="date" required /></label>
+            <button class="primary-button export-button" type="submit"><span>导出 CSV</span><span aria-hidden="true">↓</span></button>
+            <p id="exportError" class="form-error export-error" role="alert"></p>
+          </form>
+        </section>
+
+        <section class="inbox-card">
+          <div class="inbox-toolbar">
+            <div><p class="card-label">INBOX</p><h2>留言列表</h2></div>
+            <div class="filters">
+              <select id="statusFilter" aria-label="筛选阅读状态">
+                <option value="all">全部状态</option>
+                <option value="unread">未读</option>
+                <option value="read">已读</option>
+              </select>
+              <select id="categoryFilter" aria-label="筛选留言类型">
+                <option value="all">全部类型</option>
+                <option value="学习">学习</option>
+                <option value="生活">生活</option>
+                <option value="班级建议">班级建议</option>
+                <option value="同学关系">同学关系</option>
+                <option value="心理困扰">心理困扰</option>
+                <option value="其他">其他</option>
+              </select>
+            </div>
+          </div>
+          <div id="messageList" class="message-list" aria-live="polite"></div>
+        </section>
+
+        <footer class="admin-footer">数据只用于班级沟通，请定期清理不再需要的留言。</footer>
+      </section>
+    </main>
+    <script src="/admin.js" defer></script>
+  </body>
+</html>
