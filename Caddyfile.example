@@ -1,0 +1,4 @@
+# 将下面的域名替换成你自己的域名。
+box.example.com {
+    reverse_proxy mailbox:3000
+}

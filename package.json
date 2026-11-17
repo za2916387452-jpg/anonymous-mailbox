@@ -1,0 +1,12 @@
+{
+  "name": "anonymous-class-mailbox",
+  "version": "1.0.0",
+  "private": true,
+  "description": "一个面向班级的轻量匿名留言信箱",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
